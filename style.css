@@ -1,123 +1,294 @@
-<!DOCTYPE html>
-<html lang="id">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Everlasting Wedding</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+body {
+    font-family: Georgia, serif;
+    background: #F8F5EF;
+    color: #3E3831;
+}
 
-<body>
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: #FFFFFF;
+}
 
-    <header class="navbar">
-        <h2>Everlasting.</h2>
-        <p>Wedding Invitation</p>
-    </header>
+.navbar h2 {
+    color: #A18454;
+}
 
-    <section class="hero">
-        <p class="subtitle">A SPECIAL MOMENT</p>
-        <h1>Our Wedding</h1>
-        <p>Create your beautiful wedding memories.</p>
-    </section>
+.navbar p {
+    font-size: 13px;
+    letter-spacing: 2px;
+}
 
-    <main class="container">
-        <section class="form-section">
-            <h2>Data Mempelai</h2>
-            <p class="description">Masukkan informasi kedua mempelai.</p>
+.hero {
+    text-align: center;
+    padding: 65px 20px;
+}
 
-            <div class="form-group">
-                <label for="namaPria">Nama Mempelai Pria</label>
-                <input type="text" id="namaPria" placeholder="Masukkan nama pria">
-            </div>
+.hero h1 {
+    font-size: 55px;
+    color: #A18454;
+    margin: 15px 0;
+}
 
-            <div class="form-group">
-                <label for="namaWanita">Nama Mempelai Wanita</label>
-                <input type="text" id="namaWanita" placeholder="Masukkan nama wanita">
-            </div>
+.subtitle {
+    color: #A18454;
+    letter-spacing: 4px;
+    font-size: 12px;
+}
 
-            <div class="form-group">
-                <label for="tanggal">Tanggal Pernikahan</label>
-                <input type="date" id="tanggal">
-            </div>
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+}
 
-            <h2>Foto Mempelai</h2>
-            <div class="photo-grid">
-                <div class="photo-box">
-                    <p>Mempelai Pria</p>
-                    <input type="file" id="inputFotoPria" accept="image/*" style="margin-top: 10px; font-size: 12px;">
-                    <div class="photo-placeholder">
-                        <img id="previewFotoPria" src="" alt="Preview Pria">
-                    </div>
-                </div>
+.form-section {
+    background: #FFFFFF;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px #00000008;
+}
 
-                <div class="photo-box">
-                    <p>Mempelai Wanita</p>
-                    <input type="file" id="inputFotoWanita" accept="image/*" style="margin-top: 10px; font-size: 12px;">
-                    <div class="photo-placeholder">
-                        <img id="previewFotoWanita" src="" alt="Preview Wanita">
-                    </div>
-                </div>
-            </div>
+.form-section h2 {
+    color: #A18454;
+    margin: 25px 0 15px;
+}
 
-            <h2>Tanda Tangan Digital</h2>
-            <p class="description">Silakan gambar tanda tangan di area berikut.</p>
+.form-section h2:first-child {
+    margin-top: 0;
+}
 
-            <div class="signature-box">
-                <canvas id="signatureCanvas"></canvas>
-            </div>
+.description {
+    color: #888888;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
 
-            <button type="button" id="clearSignature" class="btn-secondary">
-                Hapus Tanda Tangan
-            </button>
+.form-group {
+    margin-bottom: 20px;
+}
 
-            <button type="button" id="createWedding" class="btn-primary">
-                Buat Undangan
-            </button>
-        </section>
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
 
-        <section id="resultSection" class="result-section">
-            <p class="subtitle">THE WEDDING OF</p>
-            <h1 id="hasilNama">Nama Pasangan</h1>
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #DDD5C9;
+    border-radius: 8px;
+    font-size: 14px;
+}
 
-            <div class="result-photos">
-                <div>
-                    <div class="result-placeholder">
-                        <img id="hasilFotoPria" src="" alt="Foto Pria">
-                    </div>
-                    <h3 id="hasilPria"></h3>
-                </div>
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-                <span class="ampersand">&</span>
+.photo-box {
+    background: #F8F5EF;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-                <div>
-                    <div class="result-placeholder">
-                        <img id="hasilFotoWanita" src="" alt="Foto Wanita">
-                    </div>
-                    <h3 id="hasilWanita"></h3>
-                </div>
-            </div>
+.photo-box p {
+    font-size: 14px;
+}
 
-            <p class="wedding-message">
-                Dua hati, satu cerita, dan kenangan yang indah.
-            </p>
+.photo-placeholder {
+    width: 100%;
+    height: 180px;
+    background: #D9D9D9;
+    border-radius: 8px;
+    margin-top: 12px;
+    overflow: hidden;
+    position: relative;
+}
 
-            <p id="hasilTanggal"></p>
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
 
-            <div class="result-signature">
-                <p>Tanda Tangan Digital</p>
-                <img id="hasilTandaTangan" alt="Tanda tangan">
-            </div>
+.signature-box {
+    border: 2px dashed #C6AD83;
+    border-radius: 10px;
+    background: #FFFDF9;
+    overflow: hidden;
+}
 
-            <p class="footer-text">EVERLASTING LOVE</p>
+#signatureCanvas {
+    display: block;
+    width: 100%;
+    height: 180px;
+    touch-action: none;
+    cursor: crosshair;
+}
 
-            <button onclick="window.print()" class="btn-primary no-print">
-                Cetak / Simpan PDF
-            </button>
-        </section>
-    </main>
+button {
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
 
-    <script src="script.js"></script>
-</body>
+.btn-primary {
+    background: #A18454;
+    color: #FFFFFF;
+}
 
-</html>
+.btn-primary:hover {
+    background: #80653B;
+}
+
+.btn-secondary {
+    background: #EEE8DF;
+    color: #554735;
+    margin: 12px 0;
+}
+
+#createWedding {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.result-section {
+    display: none;
+    margin-top: 40px;
+    padding: 45px 25px;
+    background: #FFFFFF;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #E6D8C2;
+}
+
+.result-section h1 {
+    font-size: 38px;
+    color: #A18454;
+    margin: 20px 0;
+}
+
+.result-photos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.result-photos div {
+    width: 40%;
+}
+
+.result-placeholder {
+    width: 100%;
+    height: 220px;
+    background: #D9D9D9;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.result-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.result-photos h3 {
+    margin-top: 12px;
+}
+
+.ampersand {
+    font-size: 35px;
+    color: #A18454;
+}
+
+.wedding-message {
+    font-style: italic;
+    margin: 25px 0;
+}
+
+.result-signature {
+    margin: 35px auto;
+}
+
+.result-signature img {
+    max-width: 250px;
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.footer-text {
+    letter-spacing: 5px;
+    color: #A18454;
+    font-size: 12px;
+    margin: 25px;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-photos {
+        gap: 10px;
+    }
+
+    .result-placeholder {
+        height: 150px;
+    }
+
+    .result-section h1 {
+        font-size: 28px;
+    }
+}
+
+@media print {
+    body {
+        background: #FFFFFF;
+    }
+
+    .navbar,
+    .hero,
+    .form-section,
+    .no-print {
+        display: none !important;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .result-section {
+        display: block !important;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+    }
+}
