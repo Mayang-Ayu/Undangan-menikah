@@ -5,6 +5,7 @@ const canvas = document.getElementById("signatureCanvas");
 const ctx = canvas.getContext("2d");
 const clearButton = document.getElementById("clearSignature");
 const createButton = document.getElementById("createWedding");
+
 const inputFotoPria = document.getElementById("inputFotoPria");
 const inputFotoWanita = document.getElementById("inputFotoWanita");
 
@@ -20,7 +21,7 @@ inputFotoPria.addEventListener("change", function(event) {
             const previewPria = document.getElementById("previewFotoPria");
             previewPria.src = fotoPriaData;
             previewPria.style.display = "block";
-        }
+        };
         reader.readAsDataURL(file);
     }
 });
@@ -34,7 +35,7 @@ inputFotoWanita.addEventListener("change", function(event) {
             const previewWanita = document.getElementById("previewFotoWanita");
             previewWanita.src = fotoWanitaData;
             previewWanita.style.display = "block";
-        }
+        };
         reader.readAsDataURL(file);
     }
 });
@@ -119,15 +120,19 @@ createButton.addEventListener("click", function() {
         });
 
     const hasilFotoPria = document.getElementById("hasilFotoPria");
-    if (fotoPriaData) {
+    if (fotoPriaData !== "") {
         hasilFotoPria.src = fotoPriaData;
         hasilFotoPria.style.display = "block";
+    } else {
+        hasilFotoPria.style.display = "none";
     }
 
     const hasilFotoWanita = document.getElementById("hasilFotoWanita");
-    if (fotoWanitaData) {
+    if (fotoWanitaData !== "") {
         hasilFotoWanita.src = fotoWanitaData;
         hasilFotoWanita.style.display = "block";
+    } else {
+        hasilFotoWanita.style.display = "none";
     }
 
     document.getElementById("hasilTandaTangan").src = canvas.toDataURL("image/png");
