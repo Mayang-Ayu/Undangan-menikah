@@ -3,238 +3,121 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Everlasting Wedding</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header class="navbar">
-
         <h2>Everlasting.</h2>
-
         <p>Wedding Invitation</p>
-
     </header>
 
-
     <section class="hero">
-
         <p class="subtitle">A SPECIAL MOMENT</p>
-
         <h1>Our Wedding</h1>
-
-        <p>
-            Create your beautiful wedding memories.
-        </p>
-
+        <p>Create your beautiful wedding memories.</p>
     </section>
 
-
     <main class="container">
-
         <section class="form-section">
-
             <h2>Data Mempelai</h2>
-
-            <p class="description">
-                Masukkan informasi kedua mempelai.
-            </p>
-
+            <p class="description">Masukkan informasi kedua mempelai.</p>
 
             <div class="form-group">
-
-                <label for="namaPria">
-                    Nama Mempelai Pria
-                </label>
-
-                <input
-                    type="text"
-                    id="namaPria"
-                    placeholder="Masukkan nama pria"
-                >
-
+                <label for="namaPria">Nama Mempelai Pria</label>
+                <input type="text" id="namaPria" placeholder="Masukkan nama pria">
             </div>
-
 
             <div class="form-group">
-
-                <label for="namaWanita">
-                    Nama Mempelai Wanita
-                </label>
-
-                <input
-                    type="text"
-                    id="namaWanita"
-                    placeholder="Masukkan nama wanita"
-                >
-
+                <label for="namaWanita">Nama Mempelai Wanita</label>
+                <input type="text" id="namaWanita" placeholder="Masukkan nama wanita">
             </div>
-
 
             <div class="form-group">
-
-                <label for="tanggal">
-                    Tanggal Pernikahan
-                </label>
-
-                <input
-                    type="date"
-                    id="tanggal"
-                >
-
+                <label for="tanggal">Tanggal Pernikahan</label>
+                <input type="date" id="tanggal">
             </div>
-
 
             <h2>Foto Mempelai</h2>
-
             <div class="photo-grid">
-             <div class="photo-box">
-                <p>Mempelai Pria</p>
-                <input type="file" id="inputFotoPria" accept="image/*" style="margin-top: 10px;">
-                <div class="photo-placeholder">
-                <img id="previewFotoPria" src="" alt="Preview Pria" style="width: 100%; height: 100%; object-fit: cover; display: none; border-radius: 8px;">
-            </div>
+                <div class="photo-box">
+                    <p>Mempelai Pria</p>
+                    <input type="file" id="inputFotoPria" accept="image/*" style="margin-top: 10px; font-size: 12px;">
+                    <div class="photo-placeholder">
+                        <img id="previewFotoPria" src="" alt="Preview Pria" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    </div>
+                </div>
+
+                <div class="photo-box">
+                    <p>Mempelai Wanita</p>
+                    <input type="file" id="inputFotoWanita" accept="image/*" style="margin-top: 10px; font-size: 12px;">
+                    <div class="photo-placeholder">
+                        <img id="previewFotoWanita" src="" alt="Preview Wanita" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    </div>
+                </div>
             </div>
 
-            <div class="photo-box">
-                <p>Mempelai Wanita</p>
-                <input type="file" id="inputFotoWanita" accept="image/*" style="margin-top: 10px;">
-                <div class="photo-placeholder">
-                <img id="previewFotoWanita" src="" alt="Preview Wanita" style="width: 100%; height: 100%; object-fit: cover; display: none; border-radius: 8px;">
-            </div>
-            </div>
-        </div>
-
-        <div class="result-photos">
-    <div>
-        <div class="result-placeholder">
-            <img id="hasilFotoPria" src="" alt="Foto Pria" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: none;">
-        </div>
-        <h3 id="hasilPria"></h3>
-    </div>
-
-    <span class="ampersand">&</span>
-
-    <div>
-        <div class="result-placeholder">
-            <img id="hasilFotoWanita" src="" alt="Foto Wanita" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: none;">
-        </div>
-        <h3 id="hasilWanita"></h3>
-    </div>
-</div>
             <h2>Tanda Tangan Digital</h2>
-
-            <p class="description">
-                Silakan gambar tanda tangan di area berikut.
-            </p>
+            <p class="description">Silakan gambar tanda tangan di area berikut.</p>
 
             <div class="signature-box">
-
                 <canvas id="signatureCanvas"></canvas>
-
             </div>
 
-
-            <button
-                type="button"
-                id="clearSignature"
-                class="btn-secondary"
-            >
+            <button type="button" id="clearSignature" class="btn-secondary">
                 Hapus Tanda Tangan
             </button>
 
-
-            <button
-                type="button"
-                id="createWedding"
-                class="btn-primary"
-            >
+            <button type="button" id="createWedding" class="btn-primary">
                 Buat Undangan
             </button>
-
         </section>
 
-        <section
-            id="resultSection"
-            class="result-section"
-        >
-
+        <section id="resultSection" class="result-section">
             <p class="subtitle">THE WEDDING OF</p>
-
-            <h1 id="hasilNama">
-                Nama Pasangan
-            </h1>
-
+            <h1 id="hasilNama">Nama Pasangan</h1>
 
             <div class="result-photos">
-
                 <div>
-
-                    <div class="result-placeholder"></div>
-
+                    <div class="result-placeholder">
+                        <img id="hasilFotoPria" src="" alt="Foto Pria" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    </div>
                     <h3 id="hasilPria"></h3>
-
                 </div>
-
 
                 <span class="ampersand">&</span>
 
-
                 <div>
-
-                    <div class="result-placeholder"></div>
-
+                    <div class="result-placeholder">
+                        <img id="hasilFotoWanita" src="" alt="Foto Wanita" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    </div>
                     <h3 id="hasilWanita"></h3>
-
                 </div>
-
             </div>
-
 
             <p class="wedding-message">
                 Dua hati, satu cerita, dan kenangan yang indah.
             </p>
 
-
             <p id="hasilTanggal"></p>
 
-
             <div class="result-signature">
-
                 <p>Tanda Tangan Digital</p>
-
-                <img
-                    id="hasilTandaTangan"
-                    alt="Tanda tangan"
-                >
-
+                <img id="hasilTandaTangan" alt="Tanda tangan">
             </div>
 
+            <p class="footer-text">EVERLASTING LOVE</p>
 
-            <p class="footer-text">
-                EVERLASTING LOVE
-            </p>
-
-
-            <button
-                onclick="window.print()"
-                class="btn-primary no-print"
-            >
+            <button onclick="window.print()" class="btn-primary no-print">
                 Cetak / Simpan PDF
             </button>
-
         </section>
-
     </main>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
